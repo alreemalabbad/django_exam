@@ -1,0 +1,11 @@
+.top{
+    margin-top: 10px;
+    display: inline-block;
+    vertical-align: top;
+
+}
+.right {    
+    margin-left: 800px;
+    display: inline-block;
+    vertical-align: top;
+}

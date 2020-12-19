@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <title>The wishing app</title>
+    <style>
+        .top{
+            margin-top: 10px;
+            vertical-align: top;
+        }
+        .top a{
+            float: right;
+        }
+        .form{
+            padding:30px;
+            border:2px solid black;
+            display: inline-block;
+            margin: 10px 20px;
+        }
+        .form input{
+            float:right;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <div class="top">
+        <h3 style="display: inline-block;"> Hello {{ user_logged_in.first_name }} ! Let's edit your wish!</h3>
+        <a href="/logout" style="text-align: right;">Logout</a>
+    </div>
+
+    {% if messages %}
+    <ul class="messages">    
+    {% for message in messages %}    
+        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+    {% endfor %}
+    </ul>
+    {% endif %}
+
+    <form action='/update/{{edited_wish.id}}' method='post' class="form">
+            {% csrf_token %}
+            <p>I wish for: <input type='text' name='wish_item' value="{{edited_wish.wish_item}}"></p>
+            <p>Description: <input type='text' name='description' value="{{edited_wish.description}}"></p>
+            <p><button><a href="/wishes">Cancel</a></button>  <button type='submit'>submit</button></p>
+    </form>
+</div>
+</body>
+</html>

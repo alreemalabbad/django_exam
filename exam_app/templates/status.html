@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <title>The wishing app</title>
+    <style>
+        .top{
+            margin-top: 10px;
+            vertical-align: top;
+        }
+        .top a{
+            float: right;
+            margin: 0px 5px;
+        }
+        h1{
+            display:inline-block;
+        }
+        p{
+            display: inline-block;
+            margin-left: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <div class="top">
+        <h3 style="display: inline-block;"> Hello {{ this_user_status.first_name }}! these are your status</h3>
+        <a href="/wishes">Dashboard</a>
+        <a href="/logout" style="text-align: right;">Logout</a>
+    </div>
+    <h3 style="margin: 20px 0px;">Total wishes granted so far for all users: {{all_granted | length}}</h3>
+    <h4>your granted wishes {{this_user_granted | length}}</h4>
+    <h4> your pending wishes {{this_user_not_granted |length}}</h4>
+    </div>
+</body>
+</html>
